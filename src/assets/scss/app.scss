@@ -1,19 +1,25 @@
 @import "~bulma";
 @import "~bulma-timeline";
 
+$cl-greyEE: #eee;
+
 .navbar {
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid $cl-greyEE;
   margin-bottom: 8px;
 }
 
-.gh-username img{
-  width: 32px;
+.gh-username {
+  img {
+    width: 32px;
+  }
 }
 
-#profile-bio{
-  margin-top:10px;
+#profile-bio {
+  margin-top: 10px;
 }
 
-.timeline .timeline-item {
-  padding-bottom:1em;
+.timeline {
+  .timeline-item {
+    padding-bottom: 1em;
+  }
 }

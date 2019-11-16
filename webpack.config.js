@@ -1,10 +1,9 @@
 const path = require('path'),
-  webpack = require('webpack'),
   CleanWebpackPlugin = require('clean-webpack-plugin'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
   ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const extractPlugin = new ExtractTextPlugin({filename: './assets/css/app.css'});
+const extractPlugin = new ExtractTextPlugin('./assets/css/app.css');
 
 const config = {
 

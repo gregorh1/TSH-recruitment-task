@@ -4,20 +4,18 @@ import $ from 'cash-dom';
 
 export class App {
   initializeApp() {
-    let self = this;
+    const self = this;
 
     $('.load-username').on('click', function (e) {
-      let userName = $('.username.input').val();
+      const userName = $('.username.input').val();
 
       fetch('https://api.github.com/users/' + userName)
-        .then((response)=> {response.json})
-        .then(function (body) {
-          self.profile = body;
+        .then(response => response.json())
+        .then((respJson) => {
+          self.profile = respJson;
           self.update_profile();
         })
-
     })
-
   }
 
   update_profile() {

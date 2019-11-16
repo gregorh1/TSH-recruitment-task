@@ -931,6 +931,7 @@ builtin-status-codes@^3.0.0:
 bulma-start@^0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/bulma-start/-/bulma-start-0.0.2.tgz#472507881b1b27af29e009c8599503e1462d2031"
+  integrity sha1-RyUHiBsbJ68p4AnIWZUD4UYtIDE=
 
 bulma-timeline@^2.0.3:
   version "2.0.3"
