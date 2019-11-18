@@ -6,21 +6,20 @@ const path = require('path'),
 const extractPlugin = new ExtractTextPlugin('./assets/css/app.css');
 
 const config = {
-
   context: path.resolve(__dirname, 'src'),
-
   entry: {
-    app: './index.js'
+    app: [
+      'whatwg-fetch', // fetch polyfill
+      'es6-promise/auto', // promise polyfill
+      './index.js'
+    ]
   },
-
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: './assets/js/[name].bundle.js'
   },
-
   module: {
     rules: [
-
       {
         test: /\.js$/,
         include: /src/,
@@ -71,16 +70,13 @@ const config = {
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: ['file-loader']
       }
-
     ]
   },
-
   plugins: [
     new CleanWebpackPlugin(['dist']),
     new HtmlWebpackPlugin({template: 'index.html'}),
     extractPlugin
   ],
-
   devServer: {
     contentBase: path.resolve(__dirname, "./dist/assets/media"),
     compress: true,
@@ -88,9 +84,7 @@ const config = {
     stats: 'errors-only',
     open: true
   },
-
   devtool: 'inline-source-map'
-
 };
 
 module.exports = config;
