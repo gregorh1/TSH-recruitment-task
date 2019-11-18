@@ -9,9 +9,14 @@ export class App {
     $('.load-username').on('click', function (e) {
       const userName = $('.username.input').val();
 
+      $('#spinner').removeClass('is-hidden')
+
       fetch('https://api.github.com/users/' + userName)
         .then(response => {
-          if (!response.ok) throw new Error(response.status)
+          if (!response.ok) {
+            $('#spinner').addClass('is-hidden')
+            throw new Error(response.status)
+          }
           else return response.json()
         })
         .then((respJson) => {
@@ -48,6 +53,7 @@ export class App {
 
   updateHistory(username) {
     const url = `https://api.github.com/users/${username}/events/public`
+    
     fetch(url)
       .then(response => {
         if (!response.ok) throw new Error(response.status)
@@ -91,6 +97,8 @@ export class App {
         });
 
         $('#user-timeline').html(timelineElements)
+
+        $('#spinner').addClass('is-hidden')
       })
       .catch(err => console.error(err))
   }
