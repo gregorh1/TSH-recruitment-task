@@ -1,6 +1,6 @@
 import './assets/scss/app.scss';
 import $ from 'cash-dom';
-import moment from 'moment';
+import dateFormat from 'dateformat'
 
 export class App {
   initializeApp() {
@@ -80,7 +80,7 @@ export class App {
             `<div class="timeline-item ${i === 1 ? "is-primary" : ''}">
               <div class="timeline-marker ${i === 1 ? "is-primary" : ''}"></div>
               <div class="timeline-content">
-                <p class="heading">${moment(event.created_at).format("MMM DD, YYYY")}</p>
+                <p class="heading">${dateFormat(event.created_at, 'mmm dd, yyyy').toUpperCase()}</p>
                 <div class="content">
                   <img src="${event.actor.avatar_url}">
                   <span>
