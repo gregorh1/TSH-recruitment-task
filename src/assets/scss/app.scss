@@ -2,10 +2,16 @@
 @import "~bulma-timeline";
 
 $cl-greyEE: #eee;
+$cl-redFF: #ff0000;
 
 .navbar {
   border-bottom: 1px solid $cl-greyEE;
   margin-bottom: 8px;
+  .username {
+    &.not-valid {
+      border: 1px solid $cl-redFF;
+    }
+  }
 }
 
 #profile-bio {
