@@ -33,6 +33,7 @@
     "bulma-timeline": "^2.0.3",
     "cash-dom": "^2.1.7",
     "es6-promise": "^4.2.8",
+    "moment": "^2.24.0",
     "whatwg-fetch": "^3.0.0"
   }
 }
