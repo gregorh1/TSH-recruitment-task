@@ -4,6 +4,11 @@
 $cl-greyEE: #eee;
 $cl-redFF: #ff0000;
 
+.container {
+  @media (max-width: 1088px) {
+    padding: 0 12px;
+  }
+}
 .navbar {
   border-bottom: 1px solid $cl-greyEE;
   margin-bottom: 8px;
@@ -12,12 +17,15 @@ $cl-redFF: #ff0000;
       border: 1px solid $cl-redFF;
     }
   }
+  .navbar-item {
+    padding-left: 0;
+  }
 }
-
-#profile-bio {
-  margin-top: 10px;
+.profile {
+  .content {
+    margin-top: 10px;
+  }
 }
-
 .timeline {
   .timeline-item {
     padding-bottom: 1em;
