@@ -1,9 +1,11 @@
 const path = require('path'),
-  CleanWebpackPlugin = require('clean-webpack-plugin'),
+  { CleanWebpackPlugin } = require('clean-webpack-plugin'),
   HtmlWebpackPlugin = require('html-webpack-plugin'),
-  ExtractTextPlugin = require('extract-text-webpack-plugin');
+  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
+  TerserJSPlugin = require('terser-webpack-plugin'),
+  OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
-const extractPlugin = new ExtractTextPlugin('./assets/css/app.css');
+const optimizeCssAssetsPlugin = new OptimizeCssAssetsPlugin({});
 
 const config = {
   context: path.resolve(__dirname, 'src'),
@@ -37,22 +39,17 @@ const config = {
       },
       {
         test: /\.s?css$/,
-        use: extractPlugin.extract({
-          use: [
-            {
-              loader: 'css-loader',
-              options: {
-                sourceMap: true
-              }
-            }, {
-              loader: 'sass-loader',
-              options: {
-                sourceMap: true
-              }
-            }
-          ],
-          fallback: 'style-loader'
-        })
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          'css-loader',
+          'sass-loader',
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
       {
         test: /\.(jpg|png|gif|svg)$/,
@@ -72,10 +69,13 @@ const config = {
       }
     ]
   },
+  optimization: {
+    minimizer: [new TerserJSPlugin({}), optimizeCssAssetsPlugin],
+  },
   plugins: [
-    new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({template: 'index.html'}),
-    extractPlugin
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({ template: 'index.html' }),
+    new MiniCssExtractPlugin(),
   ],
   devServer: {
     contentBase: path.resolve(__dirname, "./dist/assets/media"),
