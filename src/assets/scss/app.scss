@@ -8,12 +8,6 @@ $cl-greyEE: #eee;
   margin-bottom: 8px;
 }
 
-.gh-username {
-  img {
-    width: 32px;
-  }
-}
-
 #profile-bio {
   margin-top: 10px;
 }
@@ -21,5 +15,12 @@ $cl-greyEE: #eee;
 .timeline {
   .timeline-item {
     padding-bottom: 1em;
+    .content {
+      display: flex;
+    }
+    img {
+      height: 25px;
+      margin-right: 8px;
+    }
   }
 }
